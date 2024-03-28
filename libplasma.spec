@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : libplasma
-Version  : 6.0.2
-Release  : 6
-URL      : https://download.kde.org/stable/plasma/6.0.2/libplasma-6.0.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/6.0.2/libplasma-6.0.2.tar.xz
-Source1  : https://download.kde.org/stable/plasma/6.0.2/libplasma-6.0.2.tar.xz.sig
+Version  : 6.0.3
+Release  : 7
+URL      : https://download.kde.org/stable/plasma/6.0.3/libplasma-6.0.3.tar.xz
+Source0  : https://download.kde.org/stable/plasma/6.0.3/libplasma-6.0.3.tar.xz
+Source1  : https://download.kde.org/stable/plasma/6.0.3/libplasma-6.0.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -31,7 +31,6 @@ BuildRequires : kcoreaddons-dev
 BuildRequires : kglobalaccel-dev
 BuildRequires : ki18n-dev
 BuildRequires : kio-dev
-BuildRequires : kirigami-dev
 BuildRequires : knotifications-dev
 BuildRequires : ksvg-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86vm-dev
@@ -98,15 +97,15 @@ locales components for the libplasma package.
 
 
 %prep
-%setup -q -n libplasma-6.0.2
-cd %{_builddir}/libplasma-6.0.2
+%setup -q -n libplasma-6.0.3
+cd %{_builddir}/libplasma-6.0.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1711153068
+export SOURCE_DATE_EPOCH=1711662472
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -143,7 +142,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1711153068
+export SOURCE_DATE_EPOCH=1711662472
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libplasma
 cp %{_builddir}/libplasma-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/libplasma/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
@@ -408,9 +407,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libPlasma.so.6
-/usr/lib64/libPlasma.so.6.0.2
+/usr/lib64/libPlasma.so.6.0.3
 /usr/lib64/libPlasmaQuick.so.6
-/usr/lib64/libPlasmaQuick.so.6.0.2
+/usr/lib64/libPlasmaQuick.so.6.0.3
 /usr/lib64/qt6/plugins/kf6/kirigami/platform/KirigamiPlasmaStyle.so
 /usr/lib64/qt6/plugins/kf6/packagestructure/plasma_applet.so
 /usr/lib64/qt6/plugins/kf6/packagestructure/plasma_containmentactions.so
