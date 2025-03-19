@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : libplasma
-Version  : 6.3.2
-Release  : 24
-URL      : https://download.kde.org/stable/plasma/6.3.2/libplasma-6.3.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/6.3.2/libplasma-6.3.2.tar.xz
-Source1  : https://download.kde.org/stable/plasma/6.3.2/libplasma-6.3.2.tar.xz.sig
+Version  : 6.3.3
+Release  : 25
+URL      : https://download.kde.org/stable/plasma/6.3.3/libplasma-6.3.3.tar.xz
+Source0  : https://download.kde.org/stable/plasma/6.3.3/libplasma-6.3.3.tar.xz
+Source1  : https://download.kde.org/stable/plasma/6.3.3/libplasma-6.3.3.tar.xz.sig
 Source2  : D7574483BB57B18D.pkey
 Summary  : No detailed summary available
 Group    : Development/Tools
@@ -75,11 +75,13 @@ BuildRequires : xcb-util-wm-dev
 %define debug_package %{nil}
 
 %description
-libplasma
-This directory contains the classes making up libplasma, which provides the
-core framework used by Plasma applications, such as the Plasma desktop shell
-and its components. This includes applet and extension definitions and loading,
-common GUI elements, data and service interaction, search system, etc.
+Plasma Applet Template
+----------------------
+-- Namespace adaption --
+Each Plasma plugin has a unique identifier, which is also used to find related
+resources (like the translation catalogs).
+To avoid naming collisions, Plasma plugins use a reverse domain name notation
+for that identifier:
 
 %package data
 Summary: data components for the libplasma package.
@@ -133,15 +135,15 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) D7574483BB57B18D' gpg.status
-%setup -q -n libplasma-6.3.2
-cd %{_builddir}/libplasma-6.3.2
+%setup -q -n libplasma-6.3.3
+cd %{_builddir}/libplasma-6.3.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1740588729
+export SOURCE_DATE_EPOCH=1742407701
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -178,7 +180,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1740588729
+export SOURCE_DATE_EPOCH=1742407701
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libplasma
 cp %{_builddir}/libplasma-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/libplasma/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
@@ -403,9 +405,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libPlasma.so.6
-/usr/lib64/libPlasma.so.6.3.2
+/usr/lib64/libPlasma.so.6.3.3
 /usr/lib64/libPlasmaQuick.so.6
-/usr/lib64/libPlasmaQuick.so.6.3.2
+/usr/lib64/libPlasmaQuick.so.6.3.3
 /usr/lib64/qt6/plugins/kf6/kirigami/platform/KirigamiPlasmaStyle.so
 /usr/lib64/qt6/plugins/kf6/packagestructure/plasma_applet.so
 /usr/lib64/qt6/plugins/kf6/packagestructure/plasma_containmentactions.so
